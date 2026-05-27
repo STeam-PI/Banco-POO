@@ -4,14 +4,16 @@ import conta.Conta;
 import conta.ContaCorrente;
 import pessoa.Pessoa;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BancoExemplo extends Banco {
-    private Map<Double, Conta> contasExemplo = new HashMap<>();
+
+    public BancoExemplo() {
+        super("Banco Exemplo", 0.0, 2.0);
+    }
 
     @Override
     public Conta criarConta(Pessoa titular, String senha) {
-            return new ContaCorrente(titular, senha);
+        ContaCorrente conta = new ContaCorrente(titular, senha);
+        adicionarConta(conta);
+        return conta;
     }
 }

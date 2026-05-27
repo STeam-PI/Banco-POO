@@ -15,7 +15,7 @@ public abstract class Conta {
         this.titular = titular;
         this.senha = senha;
         this.saldo = 0d;
-        this.numeroDaConta =  autoIncrement++;
+        this.numeroDaConta = autoIncrement++;
         this.parcelasEmprestimo = 0;
         this.valorParcelasEmprestimo = 0d;
     }
@@ -27,4 +27,17 @@ public abstract class Conta {
     public void removFundos(Double valor) {
         this.saldo -= valor;
     }
+
+    public boolean verificarSenha(String senha) {
+        return this.senha.equals(senha);
+    }
+
+    public int getNumeroDaConta() { return numeroDaConta; }
+    public double getSaldo() { return saldo; }
+    public Pessoa getTitular() { return titular; }
+    public int getParcelasEmprestimo() { return parcelasEmprestimo; }
+    public double getValorParcelasEmprestimo() { return valorParcelasEmprestimo; }
+
+    public void setParcelasEmprestimo(int parcelas) { this.parcelasEmprestimo = parcelas; }
+    public void setValorParcelasEmprestimo(double valor) { this.valorParcelasEmprestimo = valor; }
 }
