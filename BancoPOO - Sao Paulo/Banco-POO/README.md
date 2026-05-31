@@ -57,8 +57,7 @@ src/
 │   └── CorinthiansMegazord.java
 ├── conta/
 │   ├── Conta.java                     → Classe abstrata base (lista de empréstimos)
-│   ├── ContaCorinthians.java          → Conta com limite especial de saque
-│   └── ContaCorrente.java
+│   └── ContaCorinthians.java          → Conta utilizada pelos bancos Corinthians
 ├── emprestimo/
 │   ├── Emprestimo.java                → Juros, limite e parcelas
 │   ├── EmprestimoBasico.java
@@ -91,7 +90,7 @@ cada banco decide, de forma independente, se aprova o empréstimo e qual oferta 
 
 **Terminal:**
 ```bash
-cd Banco/src
+cd src
 javac -d ../out Main.java
 java -cp ../out Main
 ```
