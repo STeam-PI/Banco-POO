@@ -1,6 +1,7 @@
 package banco;
 
 import conta.Conta;
+import emprestimo.Emprestimo;
 import pessoa.Pessoa;
 
 import java.util.HashMap;
@@ -20,15 +21,22 @@ public abstract class Banco {
 
     public abstract Conta criarConta(Pessoa titular, String senha);
 
+    // Factory Method: cada banco decide se aprova e qual oferta retorna
+    public abstract Emprestimo solicitarEmprestimo(double patrimonioTotal);
+
     public void adicionarConta(Conta conta) {
         contas.put(conta.getNumeroDaConta(), conta);
+    }
+
+    public boolean temConta(Conta conta) {
+        return contas.containsValue(conta);
     }
 
     public boolean realizarTransferencia(Conta contaOrigem, int numeroDaConta, Banco bancoDestino, double vTransferencia) {
         Conta contaDestino = bancoDestino.buscarConta(numeroDaConta);
 
         if (contaDestino == null) {
-            System.out.println("Não foi possivel realizar transferencia!");
+            System.out.println("Conta de destino não encontrada!");
             return false;
         }
 
@@ -48,11 +56,7 @@ public abstract class Banco {
     }
 
     public Conta buscarConta(int numeroConta) {
-        Conta conta = contas.get(numeroConta);
-        if (conta == null) {
-            System.out.println("Conta não encontrada!");
-        }
-        return conta;
+        return contas.get(numeroConta);
     }
 
     public String getNome() { return nome; }
